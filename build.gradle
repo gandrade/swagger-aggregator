@@ -1,0 +1,34 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'io.github.gandrade'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('io.springfox:springfox-swagger2:2.9.2')
+	// implementation('io.springfox:springfox-swagger-ui-ui:2.9.2')
+	implementation('io.springfox.ui:springfox-swagger-ui-rfc6570:1.0.0')
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
