@@ -56,23 +56,17 @@ public class SwaggerAggregatorApplication {
 			petStore.setSwaggerVersion("2.0");
 			petStore.setUrl("http://petstore.swagger.io/v2/swagger.json");
 
-			List<SwaggerResource> resources = new ArrayList<>(inMemorySwaggerResourcesProvider.get());
+			SwaggerResource dummy = new SwaggerResource();
+			dummy.setName("Dummy");
+			dummy.setSwaggerVersion("2.0");
+			dummy.setUrl("http://pc00br28844.ad.esi.adp.com:8080/v2/api-docs");
+
+
+			List<SwaggerResource> resources = new ArrayList<>();
 			resources.add(wsResource);
 			resources.add(petStore);
+			resources.add(dummy);
 			return resources;
-		};
-	}
-
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**")
-						.allowedOrigins("*")
-						.allowedHeaders("*")
-						.allowedMethods("POST", "GET", "OPTIONS", "PUT");
-			}
 		};
 	}
 }
