@@ -26,7 +26,6 @@ import java.util.List;
 
 @SpringBootApplication
 @EnableSwagger2
-
 public class SwaggerAggregatorApplication {
 
 	public static void main(String[] args) {
@@ -35,16 +34,17 @@ public class SwaggerAggregatorApplication {
 
 	@Bean
 	public Docket docket() {
+		String basePackage = SwaggerAggregatorApplication.class.getPackage().getName();
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage(SwaggerAggregatorApplication.class.getPackage().getName()))
+				.apis(RequestHandlerSelectors.basePackage(basePackage))
 				.paths(PathSelectors.any())
 				.build();
 	}
 
 	@Primary
 	@Bean
-	public SwaggerResourcesProvider swaggerResourcesProvider(InMemorySwaggerResourcesProvider defaultResourcesProvider) {
+	public SwaggerResourcesProvider swaggerResourcesProvider(InMemorySwaggerResourcesProvider inMemorySwaggerResourcesProvider) {
 		return () -> {
 			SwaggerResource wsResource = new SwaggerResource();
 			wsResource.setName("HumanStore");
@@ -56,7 +56,7 @@ public class SwaggerAggregatorApplication {
 			petStore.setSwaggerVersion("2.0");
 			petStore.setUrl("http://petstore.swagger.io/v2/swagger.json");
 
-			List<SwaggerResource> resources = new ArrayList<>(defaultResourcesProvider.get());
+			List<SwaggerResource> resources = new ArrayList<>(inMemorySwaggerResourcesProvider.get());
 			resources.add(wsResource);
 			resources.add(petStore);
 			return resources;
@@ -65,10 +65,13 @@ public class SwaggerAggregatorApplication {
 
 	@Bean
 	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
+		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("*").allowedHeaders("*").allowedMethods("POST", "GET", "OPTIONS", "PUT");
+				registry.addMapping("/**")
+						.allowedOrigins("*")
+						.allowedHeaders("*")
+						.allowedMethods("POST", "GET", "OPTIONS", "PUT");
 			}
 		};
 	}
