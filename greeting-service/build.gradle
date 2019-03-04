@@ -23,6 +23,12 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	compileOnly('org.springframework:spring-context-indexer')
+	implementation ('org.springframework.boot:spring-boot-starter-web'){
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-json'
+		exclude group: 'org.hibernate.validator', module: 'hibernate-validator'
+	}
+	implementation('org.slf4j:slf4j-jdk14')
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
