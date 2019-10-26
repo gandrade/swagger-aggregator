@@ -22,13 +22,16 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	swagger2Version = '2.9.2'
+}
+
 dependencies {
-	compileOnly('org.springframework:spring-context-indexer')
 	implementation ('org.springframework.boot:spring-boot-starter-web'){
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-json'
 		exclude group: 'org.hibernate.validator', module: 'hibernate-validator'
 	}
-	implementation('org.slf4j:slf4j-jdk14')
+	implementation("io.springfox:springfox-swagger2:${swagger2Version}")
+	implementation("io.springfox:springfox-swagger-ui:${swagger2Version}")
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
