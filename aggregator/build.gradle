@@ -27,21 +27,17 @@ ext {
 }
 
 dependencies {
-	compileOnly('org.springframework:spring-context-indexer')
 	implementation('org.springframework.boot:spring-boot-starter-web'){
 		exclude group: 'org.yaml'
 		exclude group: 'com.fasterxml.jackson.datatype'
 		exclude group: 'com.fasterxml.jackson.module'
-		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 		exclude group: 'org.hibernate.validator', module: 'hibernate-validator'
 		exclude group: 'org.apache.tomcat.embed', module: 'tomcat-embed-el'
 		exclude group: 'org.apache.tomcat.embed', module: 'tomcat-embed-websocket'
 	}
-	implementation('org.slf4j:slf4j-jdk14')
-
 	implementation("io.springfox:springfox-swagger2:${swagger2Version}")
-	// implementation("io.springfox:springfox-swagger-ui-ui:${swagger2Version}")
-	implementation('io.springfox.ui:springfox-swagger-ui-rfc6570:1.0.0')
+	implementation("io.springfox:springfox-swagger-ui:${swagger2Version}")
+//	implementation('io.springfox.ui:springfox-swagger-ui-rfc6570:1.0.0')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 }
 
