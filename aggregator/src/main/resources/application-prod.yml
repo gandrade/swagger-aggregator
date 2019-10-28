@@ -3,16 +3,16 @@ swagger:
       -
         name: MyTaxi Assessment
         version: 2.0
-        url: http://mytaxi-assessment.herokuapp.com/v2/swagger.json
+        url: https://mytaxi-assessment.herokuapp.com/v2/api-docs
       -
         name: Glovo Assessment
         version: 2.0
-        url: http://glovo-assessment.herokuapp.com/v2/swagger.json
+        url: https://glovo-assessment.herokuapp.com/v2/api-docs
       -
         name: WAES Assessment
         version: 2.0
-        url: http://waes-assessment.herokuapp.com/v2/swagger.json
+        url: https://waes-assessment.herokuapp.com/v2/api-docs
       -
         name: N26 Assessment
         version: 2.0
-        url: http://n26-assessment.herokuapp.com/v2/swagger.json
+        url: https://n26-assessment.herokuapp.com/v2/api-docs

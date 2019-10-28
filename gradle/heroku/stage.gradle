@@ -1,0 +1,6 @@
+task stage(dependsOn: ['clean', 'copyToLib'])
+
+task copyToLib(type: Copy, dependsOn: ['clean', 'bootJar']) {
+  from "$buildDir/libs"
+  into "$rootProject.buildDir/libs"
+}
