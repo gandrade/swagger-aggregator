@@ -28,7 +28,7 @@ ext {
 
 dependencies {
 	implementation('org.springframework.boot:spring-boot-starter-web'){
-		exclude group: 'org.yaml'
+//		exclude group: 'org.yaml'
 		exclude group: 'com.fasterxml.jackson.datatype'
 		exclude group: 'com.fasterxml.jackson.module'
 		exclude group: 'org.hibernate.validator', module: 'hibernate-validator'
