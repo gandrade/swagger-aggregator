@@ -1,0 +1,18 @@
+swagger:
+  applications:
+      -
+        name: MyTaxi Assessment
+        version: 2.0
+        url: http://mytaxi-assessment.herokuapp.com/v2/swagger.json
+      -
+        name: Glovo Assessment
+        version: 2.0
+        url: http://glovo-assessment.herokuapp.com/v2/swagger.json
+      -
+        name: WAES Assessment
+        version: 2.0
+        url: http://waes-assessment.herokuapp.com/v2/swagger.json
+      -
+        name: N26 Assessment
+        version: 2.0
+        url: http://n26-assessment.herokuapp.com/v2/swagger.json
